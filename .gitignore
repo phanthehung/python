@@ -1,0 +1,6 @@
+
+demo/*
+.idea/*
+*/__pycache__/*
+*.pyc
+webapp/api/__pycache__/user.cpython-311.pyc
