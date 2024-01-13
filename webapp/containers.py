@@ -3,7 +3,6 @@ import os
 from dependency_injector import containers, providers
 
 from webapp.database import Database
-from webapp.service.dummy import DummyService
 from webapp.service.form import FormService
 from webapp.service.submission import SubmissionService
 from webapp.repository.form import FormRepository
@@ -25,15 +24,12 @@ def get_url() -> str:
 class Container(containers.DeclarativeContainer):
     wiring_config = containers.WiringConfiguration(modules=[
         "webapp.api.form",
-        "webapp.api.dummy",
         "webapp.api.submission",
         "webapp.api.schedule",
         "webapp.api.user"
     ])
 
     db = providers.Singleton(Database, db_url=get_url())
-
-    dummyService = providers.Factory(DummyService)
 
     question_validators = [TextQuestionValidator(), ListQuestionValidator(), GridQuestionValidator()]
     answer_validators = [ListAnswerValidator(), DateAnswerValidator(), TimeAnswerValidator()]

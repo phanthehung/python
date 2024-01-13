@@ -27,7 +27,7 @@ class Database:
         session: Session = self._session_factory()
         try:
             yield session
-        except Exception:
+        except Exception as e:
             logger.exception("Session rollback because of exception")
             session.rollback()
             raise

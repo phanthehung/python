@@ -19,10 +19,7 @@ def create_form(
         user: Annotated[User, Depends(get_current_user)],
         service: FormService = Depends(Provide[Container.form_service]),
 ):
-    print("----------------------------------------------------")
-    print(user.email)
     form.email = user.email
-    print(form.email)
     return service.create_form(form)
 
 

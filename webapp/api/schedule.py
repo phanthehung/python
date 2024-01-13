@@ -12,7 +12,7 @@ router = APIRouter()
 
 
 @router.on_event("startup")
-@repeat_at(cron="0 * * * *")
+@repeat_at(cron="* * * * *")
 @inject
 def send_form(
         repository: ScheduleRepository = Depends(Provide[Container.schedule_repo])

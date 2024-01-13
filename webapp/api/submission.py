@@ -66,3 +66,13 @@ def export_submissions(
     response = StreamingResponse(iter([stream.getvalue()]), media_type="text/csv")
     response.headers["Content-Disposition"] = "attachment; filename=export.csv"
     return response
+
+
+@router.patch("/answers/")
+@inject
+def update_score(
+        id_answer: int,
+        score: int,
+
+):
+    pass
